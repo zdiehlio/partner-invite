@@ -1,0 +1,31 @@
+{
+  "name": "partner-invite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "mocha",
+    "start": "node partner-invite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zdiehlio/partner-invite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zdiehlio/partner-invite/issues"
+  },
+  "homepage": "https://github.com/zdiehlio/partner-invite#readme",
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "express": "^4.15.4",
+    "mocha": "^3.5.0",
+    "superagent": "^3.6.0"
+  },
+  "dependencies": {
+    "express": "^4.15.4",
+    "xmlhttprequest": "^1.8.0"
+  }
+}

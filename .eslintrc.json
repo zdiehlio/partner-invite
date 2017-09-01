@@ -1,0 +1,21 @@
+{
+  "rules": {
+    "react/prop-types": [0],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "comma-dangle": ["error", "always-multiline"],
+    "no-console": "off",
+    "no-unused-vars": "off",
+    "indent": [ "error", 2 ],
+    "semi": ["error", "never"]
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "mocha": true,
+    "commonjs": true
+  },
+  "parserOptions": {
+  "sourceType": "module"
+  },
+  "extends": "eslint:recommended"
+}

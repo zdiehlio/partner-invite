@@ -5,16 +5,19 @@ let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
 let request = new XMLHttpRequest()
 
 const partnerFinder = module.exports = {}
-partnerFinder.partnerList = []
+let partnerList = []
 
+//make a new get request using xmlhttp
 request.open('GET', 'https://success.spidergap.com/partners.json?inf_contact_key=865875f0b9defa6bc46bf92f665f1ffbf1f7bf37dacf755a60126ee79f7e296e')
 request.responseType = 'text'
 request.send()
 
+//function to convert degrees to radian
 partnerFinder.degreeToRadian = (deg) => {
   return deg * (Math.PI/180)
 }
 
+//using the Haversine formula, calculate the distance between 2 sets of coordinates
 partnerFinder.distanceFromOffice = (lat1,lon1,lat2,lon2) => {
   var R = 6371
   var dLat = partnerFinder.degreeToRadian(lat2-lat1)
@@ -28,7 +31,7 @@ partnerFinder.distanceFromOffice = (lat1,lon1,lat2,lon2) => {
   return d
 }
 
-
+//loop through the list of partners and return those within 100km into an array for later use
 partnerFinder.findPartners = () => {
   let partnerData = JSON.parse(request.responseText)
   let officeLocationLat = 51.515419
@@ -42,9 +45,9 @@ partnerFinder.findPartners = () => {
     partnerLocationLon = partnerLocationCoord[1]
     let distance = partnerFinder.distanceFromOffice(officeLocationLat, officeLocationLon, partnerLocationLat, partnerLocationLon)
     if(distance <= 100){
-      partnerFinder.partnerList.push(partnerData[i].organization)
+      partnerList.push(partnerData[i].organization)
     }
   }
-  console.log(partnerFinder.partnerList)
+  console.log(partnerList)
 }
 request.addEventListener('load', partnerFinder.findPartners)
